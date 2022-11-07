@@ -11,7 +11,7 @@ import 'package:ar_flutter_plugin/datatypes/node_types.dart';
 import 'package:ar_flutter_plugin/datatypes/hittest_result_types.dart';
 import 'package:ar_flutter_plugin/models/ar_node.dart';
 import 'package:ar_flutter_plugin/models/ar_hittest_result.dart';
-import 'package:vector_math/vector_math_64.dart';
+import 'package:vector_math/vector_math_64.dart' as vectors;
 
 class ARItemViewScreen extends StatefulWidget {
   final String? imageUrl;
@@ -39,7 +39,8 @@ class _ARItemViewScreenState extends State<ARItemViewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('AR View'),
+          backgroundColor: Colors.black,
+          title: const Text('AR View' ,style: TextStyle(color: Colors.white),),
         ),
         body: ARView(
             onARViewCreated: onARViewCreated,
@@ -96,9 +97,9 @@ class _ARItemViewScreenState extends State<ARItemViewScreen> {
         var newNode = ARNode(
             type: NodeType.localGLTF2,
             uri: widget.imageUrl!,
-            scale: Vector3(0.5, 0.5, 0.5),
-            position: Vector3(0.0, 0.0, 0.0),
-            rotation: Vector4(1.0, 0.0, 0.0, 0.0)
+            scale: vectors.Vector3(0.5, 0.5, 0.5),
+            position: vectors.Vector3(0.0, 0.0, 0.0),
+            rotation: vectors.Vector4(1.0, 0.0, 0.0, 0.0)
             );
         bool? didAddNodeToAnchor =
             await arObjectManager!.addNode(newNode, planeAnchor: newAnchor);
